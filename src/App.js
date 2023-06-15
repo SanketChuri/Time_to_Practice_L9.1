@@ -1,4 +1,7 @@
-import logo from './assets/investment-calculator-logo.png';
+import Header from "./Components/Header/Header";
+import UserInput from "./Components/UserInput/UserInput";
+import ResultsTable from "./Components/ResultsTable/ResultsTable";
+// import logo from './assets/investment-calculator-logo.png';
 
 function App() {
   const calculateHandler = (userInput) => {
@@ -7,10 +10,10 @@ function App() {
 
     const yearlyData = []; // per-year results
 
-    let currentSavings = +userInput['current-savings']; // feel free to change the shape of this input object!
-    const yearlyContribution = +userInput['yearly-contribution']; // as mentioned: feel free to change the shape...
-    const expectedReturn = +userInput['expected-return'] / 100;
-    const duration = +userInput['duration'];
+    let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
+    const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
+    const expectedReturn = +userInput["expected-return"] / 100;
+    const duration = +userInput["duration"];
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -30,12 +33,14 @@ function App() {
 
   return (
     <div>
-      <header className="header">
+      {/* <header className="header">
         <img src={logo} alt="logo" />
         <h1>Investment Calculator</h1>
-      </header>
+      </header> */}
+      <Header></Header>
 
-      <form className="form">
+      <UserInput></UserInput>
+      {/* <form className="form">
         <div className="input-group">
           <p>
             <label htmlFor="current-savings">Current Savings ($)</label>
@@ -66,12 +71,12 @@ function App() {
             Calculate
           </button>
         </p>
-      </form>
+      </form> */}
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      <table className="result">
+      {/* <table className="result">
         <thead>
           <tr>
             <th>Year</th>
@@ -90,7 +95,8 @@ function App() {
             <td>TOTAL INVESTED CAPITAL</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
+      <ResultsTable></ResultsTable>
     </div>
   );
 }
