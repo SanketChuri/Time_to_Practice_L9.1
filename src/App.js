@@ -6,19 +6,19 @@ import ResultsTable from "./Components/ResultsTable/ResultsTable";
 // import logo from './assets/investment-calculator-logo.png';
 
 function App() {
-  const [userInput, setUserInput] = useState(null);
+  const [enteredInput, setEnteredInput] = useState(null);
 
-  console.log("userinpuyyyyyyyyyyyy", userInput);
-  const calculateHandler = (userInput) => {
-    setUserInput(userInput);
+  const calculateHandler = (enteredInput) => {
+    // console.log("enteredInput", enteredInput);
+    setEnteredInput(enteredInput);
   };
   const yearlyData = []; // per-year results
 
-  if (userInput) {
-    let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
-    const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
-    const expectedReturn = +userInput["expected-return"] / 100;
-    const duration = +userInput["duration"];
+  if (enteredInput) {
+    let currentSavings = +enteredInput["current-savings"]; // feel free to change the shape of this input object!
+    const yearlyContribution = +enteredInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
+    const expectedReturn = +enteredInput["expected-return"] / 100;
+    const duration = +enteredInput["duration"];
 
     for (let i = 0; i < duration; i++) {
       const yearlyInterest = currentSavings * expectedReturn;
@@ -39,12 +39,12 @@ function App() {
       <Header></Header>
 
       <UserInput onCalculate={calculateHandler}></UserInput>
-      {!userInput ? (
+      {!enteredInput ? (
         <p style={{ textAlign: "center" }}>No investment Calculated yet</p>
       ) : (
         <ResultsTable
           data={yearlyData}
-          initialInvestment={+userInput["current-savings"]}
+          initialInvestment={+enteredInput["current-savings"]}
         ></ResultsTable>
       )}
     </div>
