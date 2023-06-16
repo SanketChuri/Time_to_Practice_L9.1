@@ -24,12 +24,13 @@ const UserInput = (props) => {
     setUserInput(initialUserInput);
   };
 
-  const calculateHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
+    props.onCalculate(userInput);
   };
 
   return (
-    <form onSubmit={calculateHandler} className="form">
+    <form onSubmit={submitHandler} className="form">
       <div className="input-group">
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
@@ -62,7 +63,7 @@ const UserInput = (props) => {
           <input
             type="number"
             id="expected-return"
-            value={userInput["expected-return"]} // doubt
+            value={userInput["expected-return"]} // doubt     // value ={obj['id']}
             onChange={(event) =>
               inputChangeHandler("expected-return", event.target.value)
             }
@@ -73,7 +74,7 @@ const UserInput = (props) => {
           <input
             type="number"
             id="duration"
-            value={userInput["duration"]}
+            value={userInput.duration} // value ={obj.id}
             onChange={(event) =>
               inputChangeHandler("duration", event.target.value)
             }
